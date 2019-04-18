@@ -1,0 +1,45 @@
+﻿@model IEnumerable<UnitTesst.Models.Expenditure>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ngày
+        </th>
+        <th>
+            Số Tiền
+        </th>
+        <th>
+            Ghi Chú
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.date.Value.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @item.amount
+        </td>
+        <td>
+            @item.note
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
